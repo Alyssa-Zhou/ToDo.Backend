@@ -10,7 +10,8 @@ obj/
 *.db
 
 # 忽略笔记
-*.md
+Program.cs.md
+log.md
 
 # 忽略用户特定配置文件
 *.user
