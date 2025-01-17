@@ -1,0 +1,24 @@
+# 忽略环境配置文件
+.env
+appsettings.Development.json
+
+# 忽略编译输出
+bin/
+obj/
+
+# 忽略数据库文件
+*.db
+
+# 忽略笔记
+*.md
+
+# 忽略用户特定配置文件
+*.user
+*.vs
+
+# 忽略调试和发布目录
+Debug/
+Release/
+
+# 忽略http测试文件
+MyRequest.http
