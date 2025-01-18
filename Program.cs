@@ -16,9 +16,10 @@ builder.Configuration.AddEnvironmentVariables();
 // To Use in memory service
 // builder.Services.AddSingleton<ITaskService, InMemoryService>();
 
-// To Use database service
+// // To Use database service
 var connString = builder.Configuration.GetConnectionString("Todo");
 builder.Services.AddSqlite<TodoContext>(connString);
+// Comment if use in memory service
 builder.Services.AddScoped<ITaskService, DatabaseService>();
 
 var app = builder.Build();

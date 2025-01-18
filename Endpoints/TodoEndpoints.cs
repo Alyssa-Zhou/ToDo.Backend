@@ -15,6 +15,12 @@ public static class TodoEndpoints
         // GET /todos
         group.MapGet("/", (ITaskService service) => service.GetTodosAsync());
 
+        // GET /todos/done
+        group.MapGet("/done", (ITaskService service) => service.GetCompletedTodosAsync());
+
+        // GET /todos/undone
+        group.MapGet("/undone", (ITaskService service) => service.GetUncompletedTodosAsync());
+
         // GET /todos/id
         group.MapGet("/{id}", GetTodoAsync)
             .WithName(GetTodoIdEndpoint);

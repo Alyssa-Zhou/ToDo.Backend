@@ -8,6 +8,8 @@ obj/
 
 # 忽略数据库文件
 *.db
+*.db-shm
+*.db-wal
 
 # 忽略笔记
 Program.cs.md

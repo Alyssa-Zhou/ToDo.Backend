@@ -40,6 +40,18 @@ public class InMemoryService : ITaskService
         return Task.FromResult(_todos);
     }
 
+    Task<List<TodoDto>> ITaskService.GetCompletedTodosAsync()
+    {
+        var done = _todos.Where(todo => todo.IsCompleted == true).ToList();
+        return Task.FromResult(done);
+    }
+
+    Task<List<TodoDto>> ITaskService.GetUncompletedTodosAsync()
+    {
+        var done = _todos.Where(todo => todo.IsCompleted == false).ToList();
+        return Task.FromResult(done);    
+    }
+
     Task ITaskService.UpdateTodoAsync(int id, UpdateTodoDto updatedTodo)
     {
         var todoIndex = _todos.FindIndex(todo => todo.Id == id);
