@@ -43,13 +43,13 @@ public class DatabaseService : ITaskService
 
     async Task<List<TodoDto>> ITaskService.GetCompletedTodosAsync()
     {
-        return await todoContext.Todos.Where(todo => todo.IsCompleted == true)
+        return await todoContext.Todos.Where(todo => todo.IsCompleted == true).OrderBy(todo => todo.DueDate)
         .Select(todo => todo.ToDto()).AsNoTracking().ToListAsync();
     }
 
     async Task<List<TodoDto>> ITaskService.GetUncompletedTodosAsync()
     {
-        return await todoContext.Todos.Where(todo => todo.IsCompleted == false)
+        return await todoContext.Todos.Where(todo => todo.IsCompleted == false).OrderBy(todo => todo.DueDate)
         .Select(todo => todo.ToDto()).AsNoTracking().ToListAsync();
     }
 
