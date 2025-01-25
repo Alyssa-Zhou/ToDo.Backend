@@ -82,8 +82,13 @@ The API will be available at `http://localhost:5286` by default.
 
 ## API Endpoints
 
-### GET `/todos`
+### GET 
+#### GET`/todos`
 Fetch all todo items.
+#### GET `/todos/done`
+Fetch all completed todo items and order by due date.
+#### GET `/todos/undone`
+Fetch all uncompleted todo items and order by due date.
 
 ### POST `/todos`
 Create a new todo item.
@@ -102,7 +107,8 @@ Update an existing todo item.
   {
     "name": "Learn .NET",
     "dueDate": "2025-12-01",
-    "isCompleted": true
+    "isCompleted": true,
+    "isPinned":true
   }
   ```
 

@@ -8,9 +8,9 @@ public class InMemoryService : ITaskService
 {
     private readonly List<TodoDto> _todos = new()
     {
-        new TodoDto(1, "Wash Dishes", DateOnly.Parse("2025-1-11"), false),
-        new TodoDto(2, "Laundry", DateOnly.Parse("2025-1-11"), false),
-        new TodoDto(3, "Buy Milk", DateOnly.Parse("2025-1-11"), true)
+        new TodoDto(1, "Wash Dishes", DateOnly.Parse("2025-1-11"), false, false),
+        new TodoDto(2, "Laundry", DateOnly.Parse("2025-1-11"), false, false),
+        new TodoDto(3, "Buy Milk", DateOnly.Parse("2025-1-11"), true, false)
     };
 
     public async Task<TodoDto> AddTodoAsync(CreateTodoDto task)
@@ -19,6 +19,7 @@ public class InMemoryService : ITaskService
             _todos.Count+1,
             task.Name,
             task.DueDate,
+            false,
             false
         );
         _todos.Add(newTask);
@@ -55,7 +56,7 @@ public class InMemoryService : ITaskService
     Task ITaskService.UpdateTodoAsync(int id, UpdateTodoDto updatedTodo)
     {
         var todoIndex = _todos.FindIndex(todo => todo.Id == id);
-        _todos[todoIndex] = new(id, updatedTodo.Name, updatedTodo.DueDate, updatedTodo.IsCompleted);
+        _todos[todoIndex] = new(id, updatedTodo.Name, updatedTodo.DueDate, updatedTodo.IsCompleted, updatedTodo.IsPinned);
         return Task.CompletedTask;
     }
 }

@@ -7,5 +7,6 @@ public class Todo
     public int Id { get; set; } 
     public required string Name { get; set; } 
     public DateOnly DueDate { get; set; } 
-    public bool IsCompleted { get; set; } 
+    public bool IsCompleted { get; set; } = false;
+    public bool IsPinned {get;set;} = false;
 }

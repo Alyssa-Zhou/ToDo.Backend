@@ -4,6 +4,7 @@ public record class TodoDto(
     int Id, 
     string Name, 
     DateOnly DueDate, 
-    bool IsCompleted
+    bool IsCompleted,
+    bool IsPinned
 );
 

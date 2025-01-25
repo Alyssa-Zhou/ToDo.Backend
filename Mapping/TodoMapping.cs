@@ -10,14 +10,18 @@ public static class TodoMapping
         return new(){Id = todoDto.Id,
                    Name = todoDto.Name,
                    DueDate = todoDto.DueDate,
-                   IsCompleted = todoDto.IsCompleted};
+                   IsCompleted = todoDto.IsCompleted,
+                   IsPinned = todoDto.IsPinned
+                };
     }
 
     public static Todo ToEntity(this CreateTodoDto todoDto){
         return new(){
                    Name = todoDto.Name,
                    DueDate = todoDto.DueDate,
-                   IsCompleted = false};
+                   IsCompleted = false,
+                   IsPinned = false
+                };
     }
 
     public static Todo ToEntity(this UpdateTodoDto todoDto, int id){
@@ -25,10 +29,12 @@ public static class TodoMapping
                     Id = id,
                     Name = todoDto.Name,
                     DueDate = todoDto.DueDate,
-                    IsCompleted = todoDto.IsCompleted};
+                    IsCompleted = todoDto.IsCompleted,
+                    IsPinned = todoDto.IsPinned
+                };
     }
 
     public static TodoDto ToDto(this Todo todo){
-        return new(todo.Id, todo.Name, todo.DueDate, todo.IsCompleted);
+        return new(todo.Id, todo.Name, todo.DueDate, todo.IsCompleted, todo.IsPinned);
     }
 }

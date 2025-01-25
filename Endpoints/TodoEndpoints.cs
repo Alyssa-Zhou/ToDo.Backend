@@ -21,6 +21,9 @@ public static class TodoEndpoints
         // GET /todos/undone
         group.MapGet("/undone", (ITaskService service) => service.GetUncompletedTodosAsync());
 
+        // GET /todos/pinned
+
+
         // GET /todos/id
         group.MapGet("/{id}", GetTodoAsync)
             .WithName(GetTodoIdEndpoint);
